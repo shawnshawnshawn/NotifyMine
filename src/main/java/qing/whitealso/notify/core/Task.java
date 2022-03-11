@@ -21,9 +21,12 @@ public class Task {
         System.out.println("当前开播状态：" + (status == 2 ? "未开播" : "开播中") + ", 当前时间：" + format);
         if (status != 2) {
             Launch.sendMail();
-            Launch.updateStatus(false);
+            Launch.updateOpen(false);
+            Launch.updateClose(true);
         } else {
-            Launch.updateStatus(true);
+            Launch.sendCloseMail();
+            Launch.updateOpen(true);
+            Launch.updateClose(false);
         }
     }
 }
